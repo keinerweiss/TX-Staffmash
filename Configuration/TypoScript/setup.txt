@@ -1,0 +1,29 @@
+plugin.tx_rmstaffmash {
+
+	persistence {
+		storagePid = {$plugin.tx_rmstaffmash.persistence.storagePid}
+		classes {
+			Tx_RmStaffmash_Domain_Model_Address {
+				mapping {
+					tableName = tt_address
+					recordType = Tx_RmStaffmash_Domain_Model_Address
+					columns {
+						name.mapOnProperty = name
+					}
+				}
+			}
+			Tx_Extbase_Domain_Model_FrontendUser < config.tx_extbase.persistence.classes.Tx_Extbase_Domain_Model_FrontendUser
+		}
+	}
+
+}
+config.tx_extbase.persistence.storagePid = 72
+
+# Module configuration
+module.tx_rmstaffmash {
+	persistence < plugin.tx_rmstaffmash.persistence
+}
+
+plugin.tx_rmstaffmash._CSS_DEFAULT_STYLE (
+
+)

@@ -1,0 +1,24 @@
+plugin.tx_rmstaffmash {
+	view {
+		 # cat=plugin.tx_rmstaffmash/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:tx_rmstaffmash/Resources/Private/Templates/
+		 # cat=plugin.tx_rmstaffmash/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:tx_rmstaffmash/Resources/Private/Partials/
+		 # cat=plugin.tx_rmstaffmash/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:tx_rmstaffmash/Resources/Private/Layouts/
+	}
+	persistence {
+		 # cat=plugin.tx_rmstaffmash//a; type=int+; label=Default storage PID
+		storagePid = 72
+	}
+}
+module.tx_rmstaffmash {
+	view {
+		 # cat=module.tx_rmstaffmash/file; type=string; label=Path to template root (BE)
+		templateRootPath = EXT:tx_rmstaffmash/Resources/Private/Backend/Templates/
+		 # cat=plugin.tx_rmstaffmash/file; type=string; label=Path to template partials (BE)
+		partialRootPath = EXT:tx_rmstaffmash/Resources/Private/Partials/
+		 # cat=plugin.tx_rmstaffmash/file; type=string; label=Path to template layouts (BE)
+		layoutRootPath = EXT:tx_rmstaffmash/Resources/Private/Backend/Layouts/
+	}
+}
