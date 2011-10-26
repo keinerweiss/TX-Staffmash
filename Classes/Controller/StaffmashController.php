@@ -28,7 +28,7 @@
  * @author     Ruediger Marwein
  * @subpackage Controller
  */
-class Tx_RmStaffmash_Controller_StandardController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_RmStaffmash_Controller_StaffmashController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
 	 * @var Tx_RmStaffmash_Domain_Repository_AddressRepository
@@ -43,8 +43,9 @@ class Tx_RmStaffmash_Controller_StandardController extends Tx_Extbase_MVC_Contro
 	public function initializeAction() {
 		ini_set('display_errors',1);
 		error_reporting(E_ERROR);
-		
+		$this->objectManager = t3lib_div::makeInstance('Tx_Extbase_Object_ObjectManager');
 		$this->addressRepository = t3lib_div::makeInstance('Tx_RmStaffmash_Domain_Repository_AddressRepository');
+		//$this->addressRepository = $this->objectManager->create('Tx_RmStaffmash_Domain_Repository_AddressRepository');
 	}
 
 	/**
@@ -89,15 +90,23 @@ class Tx_RmStaffmash_Controller_StandardController extends Tx_Extbase_MVC_Contro
 	protected function buildShuffledPairs() {
 		// get random Addresses from tt_address,  separated by gender
 		// TODO: IDs would be better due to memory usage
+		
+		$pairs = array();
 		$males = $this->addressRepository->findByGender('m');
 		$females = $this->addressRepository->findByGender('f');
-
+		
+		foreach($females as $female) {
+			echo "Vorname: " . $female->getFirstName() . "<br />"; 
+			echo "Nachname: " . $female->getLastName() . "<br />";
+		}
+		
+		/*
 		// shuffle mail and female
 		shuffle($males);
 		shuffle($females);
 		
 		// build male and female pairs 
-		$pairs = array();
+		
 		while(count($males)>=2) {
 			$pairs[] = array(array_shift($males),array_shift($males));
 		}
@@ -112,7 +121,7 @@ class Tx_RmStaffmash_Controller_StandardController extends Tx_Extbase_MVC_Contro
 		while(count($rest)>=2) {
 			$pairs[] = array(array_shift($rest),array_shift($rest));
 		}
-		// use random dulicate for last still leftover
+		// use random duplicate for last still leftover
 		// TODO: check if this case is actually possible
 		if(count($rest)) {
 			$random = array_rand($pairs);
@@ -122,6 +131,7 @@ class Tx_RmStaffmash_Controller_StandardController extends Tx_Extbase_MVC_Contro
 		shuffle($pairs);
 
 		return $pairs;
+		*/
 	}
 
 }

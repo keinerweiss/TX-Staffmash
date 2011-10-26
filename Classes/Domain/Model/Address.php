@@ -35,6 +35,11 @@ class Tx_RmStaffMash_Domain_Model_Address extends Tx_Extbase_DomainObject_Abstra
 
 	
 	/**
+	 * @var int
+	 */
+	protected $uid;
+	
+	/**
 	 * @var string
 	 */
 	protected $name;
